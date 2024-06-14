@@ -1,0 +1,3573 @@
+value1 ProfileElement ::= header : {
+  major-version 2,
+  minor-version 3,
+  profileType "GSMA Generic eUICC Test Profile",
+  iccid '89000123456789012341'H,
+  eUICC-Mandatory-services {
+    usim NULL,
+    isim NULL,
+    csim NULL,
+    usim-test-algorithm NULL,
+    get-identity NULL,
+    profile-a-x25519 NULL,
+    profile-b-p256 NULL
+  },
+  eUICC-Mandatory-GFSTEList {
+    { 2 23 143 1 2 1 },
+    { 2 23 143 1 2 3 },
+    { 2 23 143 1 2 4 },
+    { 2 23 143 1 2 5 },
+    { 2 23 143 1 2 7 },
+    { 2 23 143 1 2 8 },
+    { 2 23 143 1 2 9 },
+    { 2 23 143 1 2 10 },
+    { 2 23 143 1 2 11 },
+    { 2 23 143 1 2 13 },
+    { 2 23 143 1 2 14 }
+  }
+}
+value2 ProfileElement ::= mf : {
+  mf-header {
+    mandated NULL,
+    identification 4
+  },
+  templateID { 2 23 143 1 2 1 },
+  mf {
+    fileDescriptor : {
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '010A0B'H
+    }
+  },
+  ef-pl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '2F05'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0604'H,
+      efFileSize '06'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '656EFF'H
+      }
+    }
+  },
+  ef-iccid {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '2FE2'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0603'H,
+      shortEFID '10'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '98001032547698103214'H
+  },
+  ef-dir {
+    fileDescriptor : {
+      fileDescriptor '42210021'H,
+      fileID '2F00'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0602'H,
+      efFileSize '84'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '61144F0CA0000000871002FF49FF058950045553494D'H,
+    fillFileOffset : 11,
+    fillFileContent : '61144F0CA0000000871004FF49FF058950044953494D'H,
+    fillFileOffset : 11,
+    fillFileContent : '61184F10A0000003431002F310FFFF89020000FF50044353494D'H
+  },
+  ef-arr {
+    fileDescriptor : {
+      fileDescriptor '4221002E'H,
+      fileID '2F06'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0602'H,
+      efFileSize '02B2'H,
+      shortEFID '30'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '80015EA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101900080015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 19,
+    fillFileContent : '8001019000800118A40683010A950108'H,
+    fillFileOffset : 30,
+    fillFileContent : '8001019000800102A4068301019501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 8,
+    fillFileContent : '800103A406830101950108800118A406830181950108800140A40683010A9501088401D4A40683010A950108FFFF800101A406830101950108800102A406830181950108800158A40683010A9501088401D4A40683010A950108FFFF800103A406830101950108800158A40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800101A40683010195010880015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800101A406830101950108800152A40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101A40683010195010880015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800103A4068301019501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800101A406830101950108800102A40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101A406830101950108800102A4068301819501088401D4A40683010A950108800158A40683010A950108FFFF8001039000800158A40683010A9501088401D4A40683010A950108'H
+  },
+  ef-umpc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '2F08'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0602'H,
+      shortEFID '40'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '3C3C000000'H
+  }
+}
+value3 ProfileElement ::= pukCodes : {
+  puk-Header {
+    mandated NULL,
+    identification 5
+  },
+  pukCodes {
+    {
+      keyReference pukAppl1,
+      pukValue '3131313131313131'H,
+      maxNumOfAttemps-retryNumLeft 170
+    },
+    {
+      keyReference secondPUKAppl1,
+      pukValue '3232323232323232'H,
+      maxNumOfAttemps-retryNumLeft 170
+    }
+  }
+}
+value4 ProfileElement ::= pinCodes : {
+  pin-Header {
+    mandated NULL,
+    identification 2
+  },
+  pinCodes pinconfig : {
+    {
+      keyReference pinAppl1,
+      pinValue '30303030FFFFFFFF'H,
+      unblockingPINReference pukAppl1,
+      pinAttributes 6,
+      maxNumOfAttemps-retryNumLeft 51
+    },
+    {
+      keyReference adm1,
+      pinValue '3535353535353535'H,
+      pinAttributes 3,
+      maxNumOfAttemps-retryNumLeft 170
+    },
+    {
+      keyReference adm2,
+      pinValue '3636363636363636'H,
+      pinAttributes 3,
+      maxNumOfAttemps-retryNumLeft 170
+    }
+  }
+}
+value5 ProfileElement ::= telecom : {
+  telecom-header {
+    mandated NULL,
+    identification 7
+  },
+  templateID { 2 23 143 1 2 3 },
+  df-telecom {
+    fileDescriptor : {
+      fileID '7F10'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-arr {
+    fileDescriptor : {
+      fileDescriptor '42210014'H,
+      fileID '6F06'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0602'H,
+      efFileSize '14'H,
+      shortEFID 'B8'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-sume {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F54'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      efFileSize '12'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '8500FF'H
+      }
+    }
+  },
+  ef-psismsc {
+    fileDescriptor : {
+      fileDescriptor '42210016'H,
+      fileID '6FE5'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0607'H,
+      efFileSize '16'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '801474656C3A2B313132323333343435353636373738'H
+  },
+  df-graphics {
+    fileDescriptor : {
+      fileID '5F50'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-img {
+    fileDescriptor : {
+      fileDescriptor '4221000A'H,
+      fileID '4F20'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F060A'H,
+      efFileSize '0A'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-launch-scws {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F01'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F060A'H,
+      efFileSize '0200'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  df-phonebook {
+    fileDescriptor : {
+      fileID '5F3A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-pbr {
+    fileDescriptor : {
+      fileDescriptor '42210064'H,
+      fileID '4F30'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0608'H,
+      efFileSize '64'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern 'A823C0034F3A0AC1034F1505C5034F0901C6034F4C0BCA034F5109C3034F1904C9034F1606A90FC4034F1102C4034F1307CA034F1408AA12C2034F1203CB034F3D0CC7024F4BC8024F4DFF'H
+      }
+    }
+  },
+  ef-psc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F22'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0607'H,
+      shortEFID '68'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-cc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F23'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0607'H,
+      shortEFID '70'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-puid {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F24'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0607'H,
+      shortEFID '78'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    },
+    fillFileContent : '0002'H
+  },
+  df-mmss {
+    fileDescriptor : {
+      fileID '5F3C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-mlpl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F20'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F060A'H,
+      efFileSize '12'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '000901000101010001FF'H
+      }
+    }
+  },
+  ef-mspl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F21'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F060A'H,
+      efFileSize '12'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '000F0100010101030708020C003E00FF'H
+      }
+    }
+  }
+}
+value6 ProfileElement ::= pinCodes : {
+  pin-Header {
+    mandated NULL,
+    identification 3
+  },
+  pinCodes pinconfig : {
+    {
+      keyReference secondPINAppl1,
+      pinValue '39393939FFFFFFFF'H,
+      unblockingPINReference secondPUKAppl1,
+      pinAttributes 3,
+      maxNumOfAttemps-retryNumLeft 51
+    }
+  }
+}
+value7 ProfileElement ::= genericFileManagement : {
+  gfm-header {
+    mandated NULL,
+    identification 23
+  },
+  fileManagementCMD {
+    {
+      filePath : ''H,
+      createFCP : {
+        fileDescriptor '4221007C'H,
+        fileID '2FFB'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060E'H,
+        efFileSize '04D8'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      filePath : '7F10'H,
+      createFCP : {
+        fileDescriptor '4621001A'H,
+        fileID '6F44'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '82'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      filePath : '7F105F3A'H,
+      createFCP : {
+        fileDescriptor '42210002'H,
+        fileID '4F09'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '14'H,
+        shortEFID '08'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H,
+          repeatPattern '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210011'H,
+        fileID '4F11'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize 'AA'H,
+        shortEFID '10'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4221000D'H,
+        fileID '4F12'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '82'H,
+        shortEFID '18'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H,
+          fillPattern '00FF'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210011'H,
+        fileID '4F13'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize 'AA'H,
+        shortEFID '38'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210028'H,
+        fileID '4F14'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '0190'H,
+        shortEFID '40'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210003'H,
+        fileID '4F15'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '1E'H,
+        shortEFID '28'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210002'H,
+        fileID '4F16'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '14'H,
+        shortEFID '30'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      fillFileContent : '0001'H,
+      fillFileContent : '0002'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      fillFileContent : '0000'H,
+      createFCP : {
+        fileDescriptor '42210014'H,
+        fileID '4F19'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize 'C8'H,
+        shortEFID '20'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4221001C'H,
+        fileID '4F3A'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '0118'H,
+        shortEFID '50'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      fillFileContent : '546573746E722E31FFFFFFFFFFFF069194982143F1FFFFFFFFFFFFFF546573746E722E32FFFFFFFFFFFF069194982143F2'H,
+      createFCP : {
+        fileDescriptor '4221000F'H,
+        fileID '4F3D'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '96'H,
+        shortEFID '60'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4221000A'H,
+        fileID '4F4B'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '64'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4221000A'H,
+        fileID '4F4C'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '64'H,
+        shortEFID '58'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H,
+          repeatPattern '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210014'H,
+        fileID '4F4D'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize 'C8'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210028'H,
+        fileID '4F51'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        efFileSize '0190'H,
+        shortEFID '48'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      filePath : '7F10'H,
+      createFCP : {
+        fileDescriptor '7821'H,
+        fileID '5F3E'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0601'H,
+        pinStatusTemplateDO '81010A0B'H
+      },
+      filePath : '7F105F3E'H,
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F01'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060A'H,
+        efFileSize '02'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      fillFileContent : '0000'H,
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F03'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060A'H,
+        efFileSize '64'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F04'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060A'H,
+        efFileSize '64'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      filePath : ''H,
+      createFCP : {
+        fileDescriptor '7821'H,
+        fileID '7F66'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0601'H,
+        pinStatusTemplateDO '010A0B'H
+      },
+      filePath : '7F66'H,
+      createFCP : {
+        fileDescriptor '7821'H,
+        fileID '5F40'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0601'H,
+        pinStatusTemplateDO '010A0B'H
+      },
+      filePath : '7F665F40'H,
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F40'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0602'H,
+        efFileSize '01'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      fillFileContent : '00'H,
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F41'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0602'H,
+        efFileSize '20'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      fillFileContent : '06013C1E3C1E0000000000000000000000000000000000000000000000000000'H,
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F42'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0602'H,
+        efFileSize '06'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H,
+          repeatPattern '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F43'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0604'H,
+        efFileSize '20'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H,
+          repeatPattern '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F44'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0604'H,
+        efFileSize '01'H,
+        shortEFID ''H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      fillFileContent : '00'H
+    }
+  }
+}
+value8 ProfileElement ::= usim : {
+  usim-header {
+    mandated NULL,
+    identification 8
+  },
+  templateID { 2 23 143 1 2 4 },
+  adf-usim {
+    fileDescriptor : {
+      fileID '7FD0'H,
+      dfName 'A0000000871002FF49FF0589'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-imsi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F07'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060A'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '080910101032540636'H
+  },
+  ef-arr {
+    fileDescriptor : {
+      fileDescriptor '42210036'H,
+      fileID '6F06'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0608'H,
+      efFileSize '032A'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '800101A406830101950108800102A406830181950108800158A40683010A950108'H,
+    fillFileOffset : 21,
+    fillFileContent : '800103A406830101950108800158A40683010A950108'H,
+    fillFileOffset : 32,
+    fillFileContent : '800101A40683010195010880015AA40683010A950108'H,
+    fillFileOffset : 32,
+    fillFileContent : '800101A40683010195010880015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 21,
+    fillFileContent : '8001019000800102A4068301019501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 16,
+    fillFileContent : '800103A4068301019501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 21,
+    fillFileContent : '800101900080015AA40683010A950108'H,
+    fillFileOffset : 38,
+    fillFileContent : '800101900080015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 27,
+    fillFileContent : '800101A406830101950108800102A4068301819501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 10,
+    fillFileContent : '800101A40683010195010880011AA40683010A950108'H,
+    fillFileOffset : 32,
+    fillFileContent : '800101A406830101950108800158A40683010A950108840132A406830101950108800102A010A406830101950108A406830181950108800103A40683010A950108'H,
+    fillFileOffset : 43,
+    fillFileContent : '80015EA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 32,
+    fillFileContent : '80010390008401D4A40683010A950108800158A40683010A950108'H
+  },
+  ef-keys {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F08'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        fillPattern '07FF'H
+      }
+    }
+  },
+  ef-keysPS {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F09'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        fillPattern '07FF'H
+      }
+    }
+  },
+  ef-hpplmn {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F31'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-ust {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F38'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '11'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '9EFFBF1DFF3E0083410310010400006E01'H
+  },
+  ef-fdn {
+    fileDescriptor : {
+      fileDescriptor '4221001C'H,
+      fileID '6F3B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '8C'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-sms {
+    fileDescriptor : {
+      fileDescriptor '422100B0'H,
+      fileID '6F3C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '06E0'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-smsp {
+    fileDescriptor : {
+      fileDescriptor '4221002A'H,
+      fileID '6F42'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '54'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-smss {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F43'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-spn {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F46'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0607'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '0147534D411154455354FF'H
+      }
+    }
+  },
+  ef-est {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F56'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-start-hfn {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F5B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    },
+    fillFileContent : 'F00000F00000'H
+  },
+  ef-threshold {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F5C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        repeatPattern 'FF'H
+      }
+    }
+  },
+  ef-psloci {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F73'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    },
+    fillFileContent : 'FFFFFFFFFFFFFF42F618FFFEFF01'H
+  },
+  ef-acc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F78'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '0001'H
+  },
+  ef-fplmn {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F7B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-loci {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F7E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    },
+    fillFileContent : 'FFFFFFFF42F618FFFEFF01'H
+  },
+  ef-ad {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FAD'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0607'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '80000002'H
+  },
+  ef-ecc {
+    fileDescriptor : {
+      fileDescriptor '4221000E'H,
+      fileID '6FB7'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0608'H,
+      efFileSize '1C'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '11F2FF4575726F20456D6572FF00'H,
+    fillFileContent : '19F1FF456D657267656E6379FF00'H
+  },
+  ef-netpar {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FC4'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '32'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    }
+  },
+  ef-epsloci {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FE3'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    },
+    fillFileOffset : 12,
+    fillFileContent : '000000000001'H
+  },
+  ef-epsnsc {
+    fileDescriptor : {
+      fileDescriptor '42210036'H,
+      fileID '6FE4'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '36'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    }
+  }
+}
+value9 ProfileElement ::= opt-usim : {
+  optusim-header {
+    mandated NULL,
+    identification 9
+  },
+  templateID { 2 23 143 1 2 5 },
+  ef-li {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F05'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-acmax {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F37'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0609'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-acm {
+    fileDescriptor : {
+      fileDescriptor '46210003'H,
+      fileID '6F39'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060B'H,
+      efFileSize '0F'H,
+      shortEFID 'E0'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-gid1 {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F3E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '02'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FFFF'H
+  },
+  ef-gid2 {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F3F'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '02'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FFFF'H
+  },
+  ef-msisdn {
+    fileDescriptor : {
+      fileDescriptor '4221001C'H,
+      fileID '6F40'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '38'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-puct {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F41'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FFFFFF0000'H
+  },
+  ef-cbmi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F45'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '08'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-cbmid {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F48'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '08'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-sdn {
+    fileDescriptor : {
+      fileDescriptor '4221001C'H,
+      fileID '6F49'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060A'H,
+      efFileSize '8C'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-ext2 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F4B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '41'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-ext3 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F4C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '41'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-cbmir {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F50'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '10'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-plmnwact {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F60'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize 'AA'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000'H
+  },
+  ef-oplmnwact {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F61'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize 'FA'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000'H
+  },
+  ef-hplmnwact {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F62'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize 'FA'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000FFFFFF0000'H
+  },
+  ef-dck {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-cnl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F32'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '3C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-smsr {
+    fileDescriptor : {
+      fileDescriptor '4221001E'H,
+      fileID '6F47'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '012C'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-bdn {
+    fileDescriptor : {
+      fileDescriptor '42210015'H,
+      fileID '6F4D'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '3F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-ext5 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F4E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '41'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-ccp2 {
+    fileDescriptor : {
+      fileDescriptor '4221000F'H,
+      fileID '6F4F'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-acl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F57'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize 'C8'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-cmi {
+    fileDescriptor : {
+      fileDescriptor '42210055'H,
+      fileID '6F58'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize 'AA'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-ici {
+    fileDescriptor : {
+      fileDescriptor '4621002A'H,
+      fileID '6F80'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize 'D2'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        fillPattern 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000FF'H
+      }
+    }
+  },
+  ef-oci {
+    fileDescriptor : {
+      fileDescriptor '46210029'H,
+      fileID '6F81'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize 'CD'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        fillPattern 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FF'H
+      }
+    }
+  },
+  ef-ict {
+    fileDescriptor : {
+      fileDescriptor '46210003'H,
+      fileID '6F82'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060B'H,
+      efFileSize '1E'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-oct {
+    fileDescriptor : {
+      fileDescriptor '46210003'H,
+      fileID '6F83'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060B'H,
+      efFileSize '1E'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-vgcs {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FB1'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize 'C8'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '21FFFFFF21F3FFFF2143FFFF2143F8FF214319FF215320F92153F1FF2153F2FF2153F3FF2153F4FF2153F5FF2153F6FF2153F7FF2153F8FF2153F9FF0200F0FF0200F1FF0200F2FF0200F3FF0200F4FF0200F5FF0200F6FF0200F7FF0200F8FF0200F9FF0210F0FF6666F0FF6666F1FF6666F2FF666683FF6666F4FF6666F5FF6666F6FF6666F7FF6666F8FF6666F9FF6676F0FF0821F0FF0821F1FF0821F2FF0821F3FF0821F4FF0821F5FF0821F6FF0821F7FF0821F8FF0821F9FF0831F0FF9999F9FF111111F9'H
+  },
+  ef-vgcss {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FB2'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '150000000000FC'H
+  },
+  ef-vbs {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FB3'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize 'C8'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '21FFFFFF21F3FFFF2143FFFF2143F8FF214319FF215320F92153F1FF2153F2FF2153F3FF2153F4FF2153F5FF2153F6FF2153F7FF2153F8FF2153F9FF0200F0FF0200F1FF0200F2FF0200F3FF0200F4FF0200F5FF0200F6FF0200F7FF0200F8FF0200F9FF0210F0FF6666F0FF6666F1FF6666F2FF666683FF6666F4FF6666F5FF6666F6FF6666F7FF6666F8FF6666F9FF6676F0FF0821F0FF0821F1FF0821F2FF0821F3FF0821F4FF0821F5FF0821F6FF0821F7FF0821F8FF0821F9FF0831F0FF9999F9FF111111F9'H
+  },
+  ef-vbss {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FB4'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '150000000000FC'H
+  },
+  ef-emlpp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FB5'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-aaem {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FB6'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-hiddenkey {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FC3'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-pnn {
+    fileDescriptor : {
+      fileDescriptor '42210014'H,
+      fileID '6FC5'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0608'H,
+      efFileSize '64'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-opl {
+    fileDescriptor : {
+      fileDescriptor '42210008'H,
+      fileID '6FC6'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0608'H,
+      efFileSize '50'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-mmsn {
+    fileDescriptor : {
+      fileDescriptor '42210005'H,
+      fileID '6FCE'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '05'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '000000FF'H
+      }
+    }
+  },
+  ef-ext8 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6FCF'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-mmsicp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FD0'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '17'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-mmsup {
+    fileDescriptor : {
+      fileDescriptor '4221000A'H,
+      fileID '6FD1'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '0A'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-mmsucp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FD2'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0609'H,
+      efFileSize '17'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-nia {
+    fileDescriptor : {
+      fileDescriptor '42210020'H,
+      fileID '6FD3'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060A'H,
+      efFileSize 'A0'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-vgcsca {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FD4'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '02'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '0103'H
+  },
+  ef-vbsca {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FD5'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '02'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '0103'H
+  },
+  ef-ehplmn {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FD9'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '1E'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-ehplmnpi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FDB'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-lrplmnsi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FDC'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-nasconfig {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FE8'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '1C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-fdnuri {
+    fileDescriptor : {
+      fileDescriptor '42210014'H,
+      fileID '6FED'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '28'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-sdnuri {
+    fileDescriptor : {
+      fileDescriptor '42210014'H,
+      fileID '6FEF'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '28'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  }
+}
+value10 ProfileElement ::= pinCodes : {
+  pin-Header {
+    mandated NULL,
+    identification 10
+  },
+  pinCodes pinconfig : {
+    {
+      keyReference secondPINAppl1,
+      pinValue '39393939FFFFFFFF'H,
+      unblockingPINReference secondPUKAppl1,
+      pinAttributes 3,
+      maxNumOfAttemps-retryNumLeft 51
+    }
+  }
+}
+value11 ProfileElement ::= akaParameter : {
+  aka-header {
+    mandated NULL,
+    identification 11
+  },
+  algoConfiguration algoParameter : {
+    algorithmID usim-test-algorithm,
+    algorithmOptions '02'H,
+    key '000102030405060708090A0B0C0D0E0F'H,
+    opc '00000000000000000000000000000000'H,
+    rotationConstants '4000204060'H,
+    xoringConstants '0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000020000000000000000000000000000000400000000000000000000000000000008'H,
+    numberOfKeccak 1
+  },
+  sqnOptions '02'H,
+  sqnDelta '000010000000'H,
+  sqnAgeLimit '000010000000'H,
+  sqnInit {
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H
+  }
+}
+value12 ProfileElement ::= gsm-access : {
+  gsm-access-header {
+    mandated NULL,
+    identification 12
+  },
+  templateID { 2 23 143 1 2 7 },
+  df-gsm-access {
+    fileDescriptor : {
+      fileID '5F3B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060D'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-kc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F20'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    },
+    fillFileOffset : 8,
+    fillFileContent : '07'H
+  },
+  ef-kcgprs {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F52'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    },
+    fillFileOffset : 8,
+    fillFileContent : '07'H
+  },
+  ef-cpbcch {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F63'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '14'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H
+      }
+    }
+  },
+  ef-invscan {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F64'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '00'H
+  }
+}
+value13 ProfileElement ::= df-5gs : {
+  df-5gs-header {
+    mandated NULL,
+    identification 13
+  },
+  templateID { 2 23 143 1 2 13 },
+  df-df-5gs {
+    fileDescriptor : {
+      fileID '5FC0'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060D'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-5gs3gpploci {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F01'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    },
+    fillFileOffset : 13,
+    fillFileContent : '42F61800000001'H
+  },
+  ef-5gsn3gpploci {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F02'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    },
+    fillFileOffset : 13,
+    fillFileContent : '42F61800000001'H
+  },
+  ef-5gs3gppnsc {
+    fileDescriptor : {
+      fileDescriptor '42210039'H,
+      fileID '4F03'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '39'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    }
+  },
+  ef-5gsn3gppnsc {
+    fileDescriptor : {
+      fileDescriptor '42210039'H,
+      fileID '4F04'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '39'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    }
+  },
+  ef-5gauthkeys {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F05'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '6E'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    }
+  },
+  ef-uac-aic {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F06'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-suci-calc-info {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F07'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      efFileSize '76'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-opl5g {
+    fileDescriptor : {
+      fileDescriptor '4221000A'H,
+      fileID '4F08'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0608'H,
+      efFileSize '32'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-routing-indicator {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F0A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern 'F0FF'H
+      }
+    }
+  }
+}
+value14 ProfileElement ::= df-saip : {
+  df-saip-header {
+    mandated NULL,
+    identification 14
+  },
+  templateID { 2 23 143 1 2 14 },
+  df-df-saip {
+    fileDescriptor : {
+      fileID '5FD0'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060D'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-suci-calc-info-usim {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '4F01'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060D'H,
+      efFileSize '76'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  }
+}
+value15 ProfileElement ::= csim : {
+  csim-header {
+    mandated NULL,
+    identification 15
+  },
+  templateID { 2 23 143 1 2 10 },
+  adf-csim {
+    fileDescriptor : {
+      fileID '7FC0'H,
+      dfName 'A0000003431002F310FFFF89020000FF'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-arr {
+    fileDescriptor : {
+      fileDescriptor '4221002E'H,
+      fileID '6F06'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060A'H,
+      efFileSize '03F4'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '8001019000'H,
+    fillFileOffset : 41,
+    fillFileContent : '800101A406830101950108800102A406830181950108800158A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800103A406830101950108800158A40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101A40683010195010880015AA40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101A40683010195010880015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800103A4068301019501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800101900080015AA40683010A950108'H,
+    fillFileOffset : 30,
+    fillFileContent : '8001019000800102A4068301019501088401D4A40683010A950108800158A40683010A950108'H,
+    fillFileOffset : 8,
+    fillFileContent : '800101A406830101950108'H,
+    fillFileOffset : 35,
+    fillFileContent : '800101900080015AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 19,
+    fillFileContent : '800103A406830101950108800118A40683010A950108840132A406830101950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '800103A406830101950108800118A40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101A406830101950108800102A4068301819501088401D4A40683010A950108800158A40683010A950108FFFF800152A40683010A950108'H,
+    fillFileOffset : 35,
+    fillFileContent : '800111A40683010195010880010AA40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800113A406830101950108800108A40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101A40683010195010880011AA40683010A9501088401D4A40683010A950108'H,
+    fillFileOffset : 13,
+    fillFileContent : '80011BA40683010A950108'H,
+    fillFileOffset : 35,
+    fillFileContent : '800101900080011AA40683010A950108'H,
+    fillFileOffset : 30,
+    fillFileContent : '800101A40683010195010880011AA40683010A950108'H,
+    fillFileOffset : 24,
+    fillFileContent : '800101900080011AA40683010A9501088401D4A40683010A950108'H
+  },
+  ef-call-count {
+    fileDescriptor : {
+      fileDescriptor '46210002'H,
+      fileID '6F21'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060B'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-imsi-m {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F22'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '008D03CB11033480DE03'H
+  },
+  ef-imsi-t {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F23'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '008D03CB11033480DE03'H
+  },
+  ef-tmsi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F24'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0610'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    },
+    fillFileContent : '000000000000000000FFFFFFFF000000'H
+  },
+  ef-ah {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F25'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-aop {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F26'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-aloc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F27'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-cdmahome {
+    fileDescriptor : {
+      fileDescriptor '42210005'H,
+      fileID '6F28'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      efFileSize '64'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'E803AE0800'H,
+    fillFileContent : 'E803AE0801'H,
+    fillFileContent : 'E803AE0803'H,
+    fillFileContent : 'E803AE0804'H,
+    fillFileContent : 'E803AE0805'H,
+    fillFileContent : 'E803AE0806'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H,
+    fillFileContent : '0000000000'H
+  },
+  ef-znregi {
+    fileDescriptor : {
+      fileDescriptor '42210008'H,
+      fileID '6F29'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      efFileSize '38'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-snregi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H
+      }
+    },
+    fillFileContent : '01000000000000'H
+  },
+  ef-distregi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-accolc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0614'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-term {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2D'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '07'H
+  },
+  ef-acp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2F'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '4E014D014E0115'H
+  },
+  ef-prl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F30'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0611'H,
+      efFileSize '12'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '001200000000400121000280005000006EDB'H
+  },
+  ef-ruimid {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F31'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '08'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '0480000000000000'H
+  },
+  ef-csim-st {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F32'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0611'H,
+      efFileSize '0A'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'F8F2009C030000000000'H
+  },
+  ef-spc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F33'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0612'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-otapaspc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F34'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-namlock {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F35'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-ota {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F36'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0611'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '0500020201020303010401000000000000'H
+  },
+  ef-sp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F37'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '62'H
+  },
+  ef-esn-meid-me {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F38'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0613'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-li {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F3A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0608'H,
+      efFileSize '04'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '02FF02FF'H
+  },
+  ef-usgind {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F42'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0614'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '03'H
+  },
+  ef-ad {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F43'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0615'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-max-prl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F45'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0614'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00122000'H
+  },
+  ef-spcs {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F46'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0609'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-mecrp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F55'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-home-tag {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F70'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '0C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-group-tag {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F71'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '0F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-specific-tag {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F72'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '0F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  },
+  ef-call-prompt {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F73'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '0F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern '00'H
+      }
+    }
+  }
+}
+value16 ProfileElement ::= opt-csim : {
+  optcsim-header {
+    mandated NULL,
+    identification 16
+  },
+  templateID { 2 23 143 1 2 11 },
+  ef-ssci {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F2E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '02'H
+  },
+  ef-fdn {
+    fileDescriptor : {
+      fileDescriptor '4221001C'H,
+      fileID '6F3B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060D'H,
+      linkPath '7FD06F3B'H
+    }
+  },
+  ef-sms {
+    fileDescriptor : {
+      fileDescriptor '422100C0'H,
+      fileID '6F3C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '03C0'H,
+      proprietaryEFInfo {
+        specialFileInformation '80'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-smsp {
+    fileDescriptor : {
+      fileDescriptor '42210017'H,
+      fileID '6F3D'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '17'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        fillPattern '00021002FFFF02FF'H
+      }
+    }
+  },
+  ef-smss {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F3E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '05'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  },
+  ef-ssfc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F3F'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '6F'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-spn {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F41'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0607'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '01000144656661756C7420536572766963652050726F7669646572204E616D65FF'H
+      }
+    }
+  },
+  ef-mdn {
+    fileDescriptor : {
+      fileDescriptor '4221000B'H,
+      fileID '6F44'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '0B'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '0A21436587A9FFFFFF0A00'H
+  },
+  ef-ecc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F47'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060A'H,
+      efFileSize '0C'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '19F1FF11F2FF'H
+      }
+    }
+  },
+  ef-me3gpdopc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F48'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-3gpdopm {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F49'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '01'H
+  },
+  ef-sipcap {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F4A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '15084000'H
+  },
+  ef-mipcap {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F4B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '1508404200'H
+  },
+  ef-sipupp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F4C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '53'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '1710143132333435363738393040727333672E636F6D2010FF'H
+      }
+    }
+  },
+  ef-mipupp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F4D'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '93'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '2CCC010133132333435363738393040727333672E636F6D800000007FFFFFFFFFFFFFFF8C00000008600000258FF'H
+      }
+    }
+  },
+  ef-sipsp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F4E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-mipsp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F4F'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '02'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00FF'H
+  },
+  ef-sippapss {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F50'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '21'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '00FF'H
+      }
+    }
+  },
+  ef-hrpdcap {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F56'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '20F880'H
+  },
+  ef-hrpdupp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F57'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '0E'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '0D0B6162634078797A2E636F6D10'H
+  },
+  ef-csspr {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F58'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        repeatPattern 'FF'H
+      }
+    }
+  },
+  ef-atc {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F59'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-eprl {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F5A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '81'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00810000030001800004000A040164030B0B04016403F50A040A5808190B040A580C970A0231130B0230C871C00200101F0100C8FFFF00800038E0080000800071E01200101F0100C8FFFF00800038E0180000800071C02200101F0100C8FFFF00808038E0280000808071E00200101F0100C8FFFF00808038E008000080802B6B'H
+  },
+  ef-bcsmsp {
+    fileDescriptor : {
+      fileDescriptor '42210002'H,
+      fileID '6F5E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '04'H,
+      proprietaryEFInfo {
+        specialFileInformation 'C0'H,
+        repeatPattern 'FF'H
+      }
+    }
+  },
+  ef-mmsn {
+    fileDescriptor : {
+      fileDescriptor '42210008'H,
+      fileID '6F65'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      efFileSize '28'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H,
+        fillPattern '000000FF'H
+      }
+    }
+  },
+  ef-ext8 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F66'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      linkPath '7FD06FCF'H
+    }
+  },
+  ef-mmsicp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F67'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      linkPath '7FD06FD0'H
+    }
+  },
+  ef-mmsup {
+    fileDescriptor : {
+      fileDescriptor '4221000A'H,
+      fileID '6F68'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      linkPath '7FD06FD1'H
+    }
+  },
+  ef-mmsucp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F69'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      linkPath '7FD06FD2'H
+    }
+  },
+  ef-3gcik {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F6B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-gid1 {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F6D'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '08'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-gid2 {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F6E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      efFileSize '08'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-sf-euimid {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F74'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-est {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F75'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F060D'H,
+      efFileSize '01'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : '00'H
+  },
+  ef-hidden-key {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F76'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      linkPath '7FD06FC3'H
+    }
+  },
+  ef-sdn {
+    fileDescriptor : {
+      fileDescriptor '4221001C'H,
+      fileID '6F79'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0605'H,
+      linkPath '7FD06F49'H
+    }
+  },
+  ef-ext2 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F7A'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      linkPath '7FD06F4B'H
+    }
+  },
+  ef-ext3 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F7B'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0604'H,
+      linkPath '7FD06F4C'H
+    }
+  },
+  ef-ici {
+    fileDescriptor : {
+      fileDescriptor '4621002A'H,
+      fileID '6F7C'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      linkPath '7FD06F80'H
+    }
+  },
+  ef-oci {
+    fileDescriptor : {
+      fileDescriptor '46210029'H,
+      fileID '6F7D'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      linkPath '7FD06F81'H
+    }
+  },
+  ef-ext5 {
+    fileDescriptor : {
+      fileDescriptor '4221000D'H,
+      fileID '6F7E'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      linkPath '7FD06F4E'H
+    }
+  },
+  ef-ccp2 {
+    fileDescriptor : {
+      fileDescriptor '4221000F'H,
+      fileID '6F7F'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      linkPath '7FD06F4F'H
+    }
+  },
+  ef-model {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F81'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0606'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    }
+  }
+}
+value17 ProfileElement ::= pinCodes : {
+  pin-Header {
+    mandated NULL,
+    identification 17
+  },
+  pinCodes pinconfig : {
+    {
+      keyReference secondPINAppl1,
+      pinValue '39393939FFFFFFFF'H,
+      unblockingPINReference secondPUKAppl1,
+      pinAttributes 3,
+      maxNumOfAttemps-retryNumLeft 51
+    }
+  }
+}
+value18 ProfileElement ::= cdmaParameter : {
+  cdma-header {
+    mandated NULL,
+    identification 18
+  },
+  authenticationKey '00000000FFFFFFFF'H,
+  ssd '0123456789ABCDEF0123456789ABCDEF'H,
+  hrpdAccessAuthenticationData '8008101820283038404880889098A0A8B0'H,
+  simpleIPAuthenticationData '108008101820283038404880889098A0A8B0'H,
+  mobileIPAuthenticationData '108008101820283038404880889098A0A8B4004080C1014181C20244044484C5054580'H
+}
+value19 ProfileElement ::= isim : {
+  isim-header {
+    mandated NULL,
+    identification 19
+  },
+  templateID { 2 23 143 1 2 8 },
+  adf-isim {
+    fileDescriptor : {
+      fileID '7FB0'H,
+      dfName 'A0000000871004FF49FF0589'H,
+      lcsi '05'H,
+      securityAttributesReferenced '2F0601'H,
+      pinStatusTemplateDO '81010A0B'H
+    }
+  },
+  ef-impi {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F02'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '20'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '801D30303130313031323334353637383940746573742E336770702E636F6DFF'H
+  },
+  ef-impu {
+    fileDescriptor : {
+      fileDescriptor '42210040'H,
+      fileID '6F04'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize 'C0'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '80357369703A30303130313031323334353637383940696D732E6D6E633030312E6D63633030312E336770706E6574776F726B2E6F7267'H,
+    fillFileOffset : 9,
+    fillFileContent : '801E7369703A2B313132333435363738393040746573742E336770702E636F6D'H,
+    fillFileOffset : 32,
+    fillFileContent : '80167369703A7573657240746573742E336770702E636F6D'H
+  },
+  ef-domain {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F03'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '20'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H,
+        fillPattern '800D746573742E336770702E636F6DFF'H
+      }
+    }
+  },
+  ef-ist {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6F07'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '07'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '01000000000000'H
+  },
+  ef-ad {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FAD'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '800002'H
+  },
+  ef-arr {
+    fileDescriptor : {
+      fileDescriptor '42210023'H,
+      fileID '6F06'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0603'H,
+      efFileSize '8C'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    },
+    fillFileContent : '800101A40683010195010880015AA40683010A9501088401D4A40683010A950108FFFF800103A4068301019501088401D4A40683010A950108800158A40683010A950108FFFF800101900080015AA40683010A9501088401D4A40683010A950108'H
+  }
+}
+value20 ProfileElement ::= opt-isim : {
+  optisim-header {
+    mandated NULL,
+    identification 20
+  },
+  templateID { 2 23 143 1 2 9 },
+  ef-pcscf {
+    fileDescriptor : {
+      fileDescriptor '42210020'H,
+      fileID '6F09'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '60'H,
+      proprietaryEFInfo {
+        specialFileInformation '40'H
+      }
+    },
+    fillFileContent : 'FF'H
+  },
+  ef-gbabp {
+    fileDescriptor : {
+      fileDescriptor '4121'H,
+      fileID '6FD5'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0602'H,
+      efFileSize '64'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  },
+  ef-gbanl {
+    fileDescriptor : {
+      fileDescriptor '42210064'H,
+      fileID '6FD7'H,
+      lcsi '05'H,
+      securityAttributesReferenced '6F0601'H,
+      efFileSize '01F4'H,
+      proprietaryEFInfo {
+        specialFileInformation '00'H
+      }
+    }
+  }
+}
+value21 ProfileElement ::= pinCodes : {
+  pin-Header {
+    mandated NULL,
+    identification 21
+  },
+  pinCodes pinconfig : {
+    {
+      keyReference secondPINAppl1,
+      pinValue '39393939FFFFFFFF'H,
+      unblockingPINReference secondPUKAppl1,
+      pinAttributes 3,
+      maxNumOfAttemps-retryNumLeft 51
+    }
+  }
+}
+value22 ProfileElement ::= akaParameter : {
+  aka-header {
+    mandated NULL,
+    identification 22
+  },
+  algoConfiguration algoParameter : {
+    algorithmID usim-test-algorithm,
+    algorithmOptions '02'H,
+    key '000102030405060708090A0B0C0D0E0F'H,
+    opc '00000000000000000000000000000000'H,
+    rotationConstants '4000204060'H,
+    xoringConstants '0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000020000000000000000000000000000000400000000000000000000000000000008'H,
+    numberOfKeccak 1
+  },
+  sqnOptions '02'H,
+  sqnDelta '000010000000'H,
+  sqnAgeLimit '000010000000'H,
+  sqnInit {
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H,
+    '000000000000'H
+  }
+}
+value23 ProfileElement ::= genericFileManagement : {
+  gfm-header {
+    mandated NULL,
+    identification 24
+  },
+  fileManagementCMD {
+    {
+      filePath : '7FD0'H,
+      createFCP : {
+        fileDescriptor '7821'H,
+        fileID '5F50'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F060D'H,
+        pinStatusTemplateDO '81010A0B'H
+      },
+      filePath : '7FD05F50'H,
+      createFCP : {
+        fileDescriptor '4221003B'H,
+        fileID '4F81'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0606'H,
+        efFileSize '0127'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210064'H,
+        fileID '4F82'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0606'H,
+        efFileSize '012C'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210064'H,
+        fileID '4F83'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0606'H,
+        efFileSize '012C'H,
+        proprietaryEFInfo {
+          specialFileInformation '00'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210014'H,
+        fileID '4F84'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0604'H,
+        efFileSize '14'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210014'H,
+        fileID '4F85'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0604'H,
+        efFileSize '14'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      createFCP : {
+        fileDescriptor '42210003'H,
+        fileID '4F86'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0604'H,
+        efFileSize '03'H,
+        proprietaryEFInfo {
+          specialFileInformation '40'H
+        }
+      },
+      filePath : '7FD0'H,
+      createFCP : {
+        fileDescriptor '7821'H,
+        fileID '7F66'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F060D'H,
+        pinStatusTemplateDO '81010A0B'H
+      },
+      filePath : '7FD07F66'H,
+      createFCP : {
+        fileDescriptor '7821'H,
+        fileID '5F40'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F060D'H,
+        pinStatusTemplateDO '81010A0B'H
+      }	   
+    }
+  }
+}
+value24 ProfileElement ::= genericFileManagement : {
+  gfm-header {
+    mandated NULL,
+    identification 25
+  },
+  fileManagementCMD {
+    {
+      filePath : '7F10'H,
+      createFCP : {
+        fileDescriptor '4221001C'H,
+        fileID '6F3A'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0605'H,
+        shortEFID ''H,
+        linkPath '7F105F3A4F3A'H
+      },
+      createFCP : {
+        fileDescriptor '4221001C'H,
+        fileID '6F3B'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060D'H,
+        shortEFID ''H,
+        linkPath '7FD06F3B'H
+      },
+      createFCP : {
+        fileDescriptor '422100B0'H,
+        fileID '6F3C'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060B'H,
+        shortEFID ''H,
+        linkPath '7FD06F3C'H
+      },
+      createFCP : {
+        fileDescriptor '4221001C'H,
+        fileID '6F40'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0608'H,
+        shortEFID ''H,
+        linkPath '7FD06F40'H
+      },
+      createFCP : {
+        fileDescriptor '4221002A'H,
+        fileID '6F42'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        shortEFID ''H,
+        linkPath '7FD06F42'H
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '6F43'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F060B'H,
+        shortEFID ''H,
+        linkPath '7FD06F43'H
+      },
+      createFCP : {
+        fileDescriptor '4221001E'H,
+        fileID '6F47'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        shortEFID ''H,
+        linkPath '7FD06F47'H
+      },
+      createFCP : {
+        fileDescriptor '4221001C'H,
+        fileID '6F49'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0608'H,
+        shortEFID ''H,
+        linkPath '7FD06F49'H
+      },
+      createFCP : {
+        fileDescriptor '4221000D'H,
+        fileID '6F4A'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0607'H,
+        shortEFID ''H,
+        linkPath '7F105F3A4F12'H
+      },
+      createFCP : {
+        fileDescriptor '4221000D'H,
+        fileID '6F4B'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0606'H,
+        shortEFID ''H,
+        linkPath '7FD06F4B'H
+      },
+      createFCP : {
+        fileDescriptor '4221000D'H,
+        fileID '6F4C'H,
+        lcsi '05'H,
+        securityAttributesReferenced '2F0608'H,
+        shortEFID ''H,
+        linkPath '7FD06F4C'H
+      },
+      filePath : '7FD07F665F40'H,
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F40'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0608'H,
+        shortEFID ''H,
+        linkPath '7F665F404F40'H
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F41'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0608'H,
+        shortEFID ''H,
+        linkPath '7F665F404F41'H
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F42'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F0608'H,
+        shortEFID ''H,
+        linkPath '7F665F404F42'H
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F43'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F060E'H,
+        shortEFID ''H,
+        linkPath '7F665F404F43'H
+      },
+      createFCP : {
+        fileDescriptor '4121'H,
+        fileID '4F44'H,
+        lcsi '05'H,
+        securityAttributesReferenced '6F060E'H,
+        shortEFID ''H,
+        linkPath '7F665F404F44'H
+      }
+    }
+  }
+}
+value25 ProfileElement ::= securityDomain : {
+  sd-Header {
+    mandated NULL,
+    identification 26
+  },
+  instance {
+    applicationLoadPackageAID 'A0000001515350'H,
+    classAID 'A000000151535041'H,
+    instanceAID 'A000000151000000'H,
+    applicationPrivileges '82DC00'H,
+    lifeCycleState '0F'H,
+    applicationSpecificParametersC9 '810280008201F08301F08701F0'H,
+    applicationParameters {
+      uiccToolkitApplicationSpecificParametersField '010000000002010606B2010000000000'H
+    }
+  },
+  keyList {
+    {
+      keyUsageQualifier '18'H,
+      keyAccess '00'H,
+      keyIdentifier '01'H,
+      keyVersionNumber '01'H,
+      keyCompontents {
+        {
+          keyType '80'H,
+          keyData '66778899AABBCCDD1122334455EEFF10'H,
+          macLength 8
+        }
+      }
+    },
+    {
+      keyUsageQualifier '14'H,
+      keyAccess '00'H,
+      keyIdentifier '02'H,
+      keyVersionNumber '01'H,
+      keyCompontents {
+        {
+          keyType '80'H,
+          keyData '112233445566778899AABBCCDDEEFF10'H,
+          macLength 8
+        }
+      }
+    },
+    {
+      keyUsageQualifier '48'H,
+      keyAccess '00'H,
+      keyIdentifier '03'H,
+      keyVersionNumber '01'H,
+      keyCompontents {
+        {
+          keyType '80'H,
+          keyData '99AABBCCDDEEFF101122334455667788'H,
+          macLength 8
+        }
+      }
+    },
+    {
+      keyUsageQualifier '18'H,
+      keyAccess '00'H,
+      keyIdentifier '01'H,
+      keyVersionNumber '02'H,
+      keyCompontents {
+        {
+          keyType '88'H,
+          keyData '66778899AABBCCDD1122334455EEFF10'H,
+          macLength 8
+        }
+      }
+    },
+    {
+      keyUsageQualifier '14'H,
+      keyAccess '00'H,
+      keyIdentifier '02'H,
+      keyVersionNumber '02'H,
+      keyCompontents {
+        {
+          keyType '88'H,
+          keyData '112233445566778899AABBCCDDEEFF10'H,
+          macLength 8
+        }
+      }
+    },
+    {
+      keyUsageQualifier '48'H,
+      keyAccess '00'H,
+      keyIdentifier '03'H,
+      keyVersionNumber '02'H,
+      keyCompontents {
+        {
+          keyType '88'H,
+          keyData '99AABBCCDDEEFF101122334455667788'H,
+          macLength 8
+        }
+      }
+    }
+  },
+  sdPersoData {
+    '0070326630732E06072A864886FC6B01600B06092A864886FC6B020202630906072A864886FC6B03640B06092A864886FC6B048000'H
+  }
+}
+value26 ProfileElement ::= rfm : {
+  rfm-header {
+    mandated NULL,
+    identification 27
+  },
+  instanceAID 'A00000055910100001'H,
+  tarList {
+    'B00120'H
+  },
+  minimumSecurityLevel '06'H,
+  uiccAccessDomain '00'H,
+  uiccAdminAccessDomain '00'H
+}
+value27 ProfileElement ::= rfm : {
+  rfm-header {
+    mandated NULL,
+    identification 28
+  },
+  instanceAID 'A00000055910100002'H,
+  tarList {
+    'B00140'H
+  },
+  minimumSecurityLevel '06'H,
+  uiccAccessDomain '00'H,
+  uiccAdminAccessDomain '00'H,
+  adfRFMAccess {
+    adfAID 'A0000000871002FF49FF0589'H,
+    adfAccessDomain '00'H,
+    adfAdminAccessDomain '00'H
+  }
+}
+value28 ProfileElement ::= rfm : {
+  rfm-header {
+    mandated NULL,
+    identification 29
+  },
+  instanceAID 'A00000055910100003'H,
+  tarList {
+    'B00141'H
+  },
+  minimumSecurityLevel '06'H,
+  uiccAccessDomain '00'H,
+  uiccAdminAccessDomain '00'H,
+  adfRFMAccess {
+    adfAID 'A0000000871004FF49FF0589'H,
+    adfAccessDomain '00'H,
+    adfAdminAccessDomain '00'H
+  }
+}
+value29 ProfileElement ::= rfm : {
+  rfm-header {
+    mandated NULL,
+    identification 30
+  },
+  instanceAID 'A00000055910100004'H,
+  tarList {
+    'B00142'H
+  },
+  minimumSecurityLevel '06'H,
+  uiccAccessDomain '00'H,
+  uiccAdminAccessDomain '00'H,
+  adfRFMAccess {
+    adfAID 'A0000003431002F310FFFF89020000FF'H,
+    adfAccessDomain '00'H,
+    adfAdminAccessDomain '00'H
+  }
+}
+value30 ProfileElement ::= end : {
+  end-header {
+    mandated NULL,
+    identification 31
+  }
+}
