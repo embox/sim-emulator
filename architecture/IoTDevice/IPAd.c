@@ -27,9 +27,12 @@ SSL_CTX *create_context() {
 
     ctx = SSL_CTX_new(method);
     if (!ctx) {
-        perror("Unable to create SSL context");
+        perror("Unable to create SSL context\n");
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
+    }
+    else{
+        printf("SSL context created from client successfully\n");
     }
 
     return ctx;
@@ -46,17 +49,21 @@ int main() {
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) {
-        perror("Unable to create socket");
+        perror("Unable to create socket\n");
         exit(EXIT_FAILURE);
     }
+    printf("Socket created succesffuly on client\n");
 
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT);
     addr.sin_addr.s_addr = inet_addr(HOST);
 
     if (connect(sockfd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
-        perror("Unable to connect");
+        perror("Unable to connect\n");
         exit(EXIT_FAILURE);
+    }
+    else{
+        printf("Client connected successfully\n");
     }
 
     ssl = SSL_new(ctx);
@@ -70,7 +77,48 @@ int main() {
 
         char buf[1024] = {0};
         SSL_read(ssl, buf, sizeof(buf) - 1);
-        printf("Received: %s\n", buf);
+
+        // Parsing received package from eIM
+        printf("\nParsing the received activation code on IPAd from eIM\n\n"); 
+        // Delimiter
+        const char delim[] = "$";
+
+        // Variables to store each part
+        char *AC_Format = NULL;
+        char *SM_DP_Address = NULL;
+        char *AC_Token = NULL;
+        char *SM_DP_OID = NULL;
+        char *ConfirmationCodeRequiredFlag = NULL;
+
+        // Tokenize the string and store in respective variables
+        char *token = strtok(buf, delim);
+        if (token != NULL) {
+            AC_Format = token;
+            token = strtok(NULL, delim);
+        }
+        if (token != NULL) {
+            SM_DP_Address = token;
+            token = strtok(NULL, delim);
+        }
+        if (token != NULL) {
+            AC_Token = token;
+            token = strtok(NULL, delim);
+        }
+        if (token != NULL) {
+            SM_DP_OID = token;
+            token = strtok(NULL, delim);
+        }
+        if (token != NULL) {
+            ConfirmationCodeRequiredFlag = token;
+        }
+
+        // Print the results to verify
+        printf("AC_Format: %s\n", AC_Format);
+        printf("SM-DP+ Address: %s\n", SM_DP_Address);
+        printf("AC_Token: %s\n", AC_Token);
+        printf("SM-DP+ OID: %s\n", SM_DP_OID);
+        printf("Confirmation Code Required Flag: %s\n", ConfirmationCodeRequiredFlag);
+
     }
 
     SSL_shutdown(ssl);
