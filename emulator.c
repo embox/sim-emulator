@@ -70,7 +70,7 @@ void profileDownload() {
 
     // Start the server process
     printf("\nStarting eIM as server...\n");
-    start_process("./architecture/SM-DPPlus", server_pipe);
+    start_process(".//architecture/SM-DPPlus", server_pipe);
 
     // Give the server some time to start up and listen
     sleep(2);
