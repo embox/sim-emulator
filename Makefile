@@ -13,6 +13,9 @@ simcard-em: simcard-em.o filesystem.o simfs.o
 architecture/eIM: architecture/eIM.c
 	$(CC) architecture/eIM.c -o architecture/eIM $(LIBS)
 
+architecture/SM-DPPlus: architecture/SM-DPPlus.c
+	$(CC) architecture/SM-DPPlus.c -o architecture/SM-DPPlus $(LIBS)
+
 architecture/IoTDevice/IPAd: architecture/IoTDevice/IPAd.c
 	$(CC) architecture/IoTDevice/IPAd.c -o architecture/IoTDevice/IPAd $(LIBS)
 
@@ -27,7 +30,7 @@ simfs.o: simfs.c MF translatefs.py
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 clean:
-	rm -f *.o simcard-em emulator architecture/eIM architecture/IoTDevice/IPAd
+	rm -f *.o simcard-em emulator architecture/eIM architecture/SM-DPPlus architecture/IoTDevice/IPAd
 
 .PHONY: all clean
 

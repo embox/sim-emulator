@@ -1,4 +1,3 @@
-// IPAd.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,6 +8,8 @@
 
 #define PORT 4433
 #define HOST "127.0.0.1"
+#define BUFFER_SIZE 1024
+#define FILENAME "received.txt"
 
 void init_openssl() {
     SSL_load_error_strings();
@@ -23,19 +24,35 @@ SSL_CTX *create_context() {
     const SSL_METHOD *method;
     SSL_CTX *ctx;
 
-    method = SSLv23_client_method();
-
+    method = TLS_client_method(); // Use TLS_client_method for compatibility
     ctx = SSL_CTX_new(method);
     if (!ctx) {
         perror("Unable to create SSL context\n");
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
     }
-    else{
-        printf("SSL context created from client successfully\n");
-    }
+
+    SSL_CTX_set_min_proto_version(ctx, TLS1_2_VERSION); // Set minimum TLS version to 1.2
+    SSL_CTX_set_cipher_list(ctx, "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384"); // Set ciphers
 
     return ctx;
+}
+
+void write_file(SSL *ssl) {
+    FILE *fp = fopen(FILENAME, "wb");
+    if (fp == NULL) {
+        perror("Unable to open file\n");
+        exit(EXIT_FAILURE);
+    }
+
+    char buffer[BUFFER_SIZE];
+    int bytes;
+
+    while ((bytes = SSL_read(ssl, buffer, BUFFER_SIZE)) > 0) {
+        fwrite(buffer, 1, bytes, fp);
+    }
+
+    fclose(fp);
 }
 
 int main() {
@@ -52,7 +69,6 @@ int main() {
         perror("Unable to create socket\n");
         exit(EXIT_FAILURE);
     }
-    printf("Socket created succesffuly on client\n");
 
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT);
@@ -62,9 +78,6 @@ int main() {
         perror("Unable to connect\n");
         exit(EXIT_FAILURE);
     }
-    else{
-        printf("Client connected successfully\n");
-    }
 
     ssl = SSL_new(ctx);
     SSL_set_fd(ssl, sockfd);
@@ -72,53 +85,47 @@ int main() {
     if (SSL_connect(ssl) <= 0) {
         ERR_print_errors_fp(stderr);
     } else {
-        char request[] = "GET / HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n";
-        SSL_write(ssl, request, strlen(request));
+        char buffer[BUFFER_SIZE] = {0};
+        int bytes;
 
-        char buf[1024] = {0};
-        SSL_read(ssl, buf, sizeof(buf) - 1);
-
-        // Parsing received package from eIM
-        printf("\nParsing the received activation code on IPAd from eIM\n\n"); 
-        // Delimiter
-        const char delim[] = "$";
-
-        // Variables to store each part
-        char *AC_Format = NULL;
-        char *SM_DP_Address = NULL;
-        char *AC_Token = NULL;
-        char *SM_DP_OID = NULL;
-        char *ConfirmationCodeRequiredFlag = NULL;
-
-        // Tokenize the string and store in respective variables
-        char *token = strtok(buf, delim);
-        if (token != NULL) {
-            AC_Format = token;
-            token = strtok(NULL, delim);
+        // Receive the identifier message
+        bytes = SSL_read(ssl, buffer, sizeof(buffer) - 1);
+        if (bytes < 0) {
+            perror("Error reading identifier\n");
+            exit(EXIT_FAILURE);
         }
-        if (token != NULL) {
-            SM_DP_Address = token;
-            token = strtok(NULL, delim);
-        }
-        if (token != NULL) {
-            AC_Token = token;
-            token = strtok(NULL, delim);
-        }
-        if (token != NULL) {
-            SM_DP_OID = token;
-            token = strtok(NULL, delim);
-        }
-        if (token != NULL) {
-            ConfirmationCodeRequiredFlag = token;
-        }
+        buffer[bytes] = '\0';
 
-        // Print the results to verify
-        printf("AC_Format: %s\n", AC_Format);
-        printf("SM-DP+ Address: %s\n", SM_DP_Address);
-        printf("AC_Token: %s\n", AC_Token);
-        printf("SM-DP+ OID: %s\n", SM_DP_OID);
-        printf("Confirmation Code Required Flag: %s\n", ConfirmationCodeRequiredFlag);
+        if (strcmp(buffer, "eIM") == 0) {
+            // Receive and parse the activation code
+            bytes = SSL_read(ssl, buffer, sizeof(buffer) - 1);
+            if (bytes < 0) {
+                perror("Error reading activation code\n");
+                exit(EXIT_FAILURE);
+            }
+            buffer[bytes] = '\0';
 
+            printf("Parsing the received activation code on IPAd from eIM\n\n");
+            const char delim[] = "$";
+
+            char *AC_Format = strtok(buffer, delim);
+            char *SM_DP_Address = strtok(NULL, delim);
+            char *AC_Token = strtok(NULL, delim);
+            char *SM_DP_OID = strtok(NULL, delim);
+            char *ConfirmationCodeRequiredFlag = strtok(NULL, delim);
+
+            printf("AC_Format: %s\n", AC_Format);
+            printf("SM-DP+ Address: %s\n", SM_DP_Address);
+            printf("AC_Token: %s\n", AC_Token);
+            printf("SM-DP+ OID: %s\n", SM_DP_OID);
+            printf("Confirmation Code Required Flag: %s\n", ConfirmationCodeRequiredFlag);
+        } else if (strcmp(buffer, "SM-DPPlus") == 0) {
+            // Receive the file
+            write_file(ssl);
+            printf("File received successfully and written to %s.\n", FILENAME);
+        } else {
+            printf("Unknown identifier: %s\n", buffer);
+        }
     }
 
     SSL_shutdown(ssl);
