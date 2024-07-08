@@ -44,13 +44,11 @@ int main() {
         default:
             printf("Invalid choice, please try again.\n");
     }
-        
 
     return 0;
 }
 
 void profileDownload() {
-    
     // Message to user 
     printf("\n->Initiating profile download procedure\n");
     printf("->Establishing Secure Connection between IPAd and eIM \n");
@@ -70,19 +68,46 @@ void profileDownload() {
 
     // Start the server process
     printf("\nStarting eIM as server...\n");
-    start_process(".//architecture/SM-DPPlus", server_pipe);
+    start_process("./architecture/eIM", server_pipe);
 
     // Give the server some time to start up and listen
     sleep(2);
 
     // Start the client process
     printf("\nStarting IPAd as client...\n");
-    start_process(".//architecture//IoTDevice/IPAd", client_pipe);
+    start_process("./architecture/IoTDevice/IPAd", client_pipe);
 
     // Read and print the outputs from both processes
     read_from_pipe(server_pipe, "Server");
     read_from_pipe(client_pipe, "Client");
 
+    // Message to user
+    printf("\n->Re-establishing Secure Connection between IPAd and SM-DPPlus\n");
+
+    // Recreate pipes for the next pair of processes
+    if (pipe(server_pipe) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+    if (pipe(client_pipe) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+
+    // Start the SM-DPPlus process
+    printf("\nStarting SM-DPPlus as server...\n");
+    start_process("./architecture/SM-DPPlus", server_pipe);
+
+    // Give the server some time to start up and listen
+    sleep(2);
+
+    // Start the client process again
+    printf("\nStarting IPAd as client...\n");
+    start_process("./architecture/IoTDevice/IPAd", client_pipe);
+
+    // Read and print the outputs from both processes
+    read_from_pipe(server_pipe, "Server");
+    read_from_pipe(client_pipe, "Client");
 }
 
 void enableProfile() {
@@ -99,7 +124,6 @@ void exitEmulator() {
     printf("Exiting the emulator. Goodbye!\n");
     exit(0); // Exit the program
 }
-
 
 void start_process(const char *program, int pipefd[2]) {
     pid_t pid = fork();

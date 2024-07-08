@@ -5,7 +5,7 @@ LIBS = -lssl -lcrypto
 
 files := simcard-em.o filesystem.o simfs.o
 
-all: simcard-em emulator architecture/eIM architecture/IoTDevice/IPAd 
+all: simcard-em emulator architecture/eIM architecture/SM-DPPlus architecture/IoTDevice/IPAd 
 
 simcard-em: simcard-em.o filesystem.o simfs.o
 	$(CC) simcard-em.o filesystem.o simfs.o -o simcard-em

@@ -108,10 +108,10 @@ int main() {
     if (SSL_accept(ssl) <= 0) {
         ERR_print_errors_fp(stderr);
     } else {
-        const char *identifier = "SM-DPPlus";
+        const char *identifier = "SM-DPPlus$SMDP.GSMA.COM";
         SSL_write(ssl, identifier, strlen(identifier));
 
-        const char *filename = "send.txt";
+        const char *filename = "profiles/TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt";
         send_file(ssl, filename);
     }
 

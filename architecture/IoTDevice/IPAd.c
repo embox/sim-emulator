@@ -9,7 +9,7 @@
 #define PORT 4433
 #define HOST "127.0.0.1"
 #define BUFFER_SIZE 1024
-#define FILENAME "received.txt"
+#define FILENAME "architecture/IoTDevice/downloaded_profiles/TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt"
 
 void init_openssl() {
     SSL_load_error_strings();
@@ -96,7 +96,12 @@ int main() {
         }
         buffer[bytes] = '\0';
 
-        if (strcmp(buffer, "eIM") == 0) {
+        const char delim[] = "$";
+
+        char *first_word = strtok(buffer, delim);
+        char *second_word = strtok(NULL, delim);
+
+        if (strcmp(first_word, "eIM") == 0) {
             // Receive and parse the activation code
             bytes = SSL_read(ssl, buffer, sizeof(buffer) - 1);
             if (bytes < 0) {
@@ -106,7 +111,6 @@ int main() {
             buffer[bytes] = '\0';
 
             printf("Parsing the received activation code on IPAd from eIM\n\n");
-            const char delim[] = "$";
 
             char *AC_Format = strtok(buffer, delim);
             char *SM_DP_Address = strtok(NULL, delim);
@@ -119,10 +123,53 @@ int main() {
             printf("AC_Token: %s\n", AC_Token);
             printf("SM-DP+ OID: %s\n", SM_DP_OID);
             printf("Confirmation Code Required Flag: %s\n", ConfirmationCodeRequiredFlag);
-        } else if (strcmp(buffer, "SM-DPPlus") == 0) {
-            // Receive the file
-            write_file(ssl);
-            printf("File received successfully and written to %s.\n", FILENAME);
+
+            // Save "SM-DPPlus$" + SM_DP_Address to address.txt
+            FILE *file = fopen("architecture/IoTDevice/address.txt", "w");
+            if (file == NULL) {
+                perror("Error opening file\n");
+                exit(EXIT_FAILURE);
+            }
+            fprintf(file, "SM-DPPlus$%s\n", SM_DP_Address);
+            fclose(file);
+        }
+        else if (strcmp(first_word, "SM-DPPlus") == 0) {
+
+            char file_buffer[BUFFER_SIZE];
+                        
+            // Checking if data is coming correct SM-DP+ Address
+            FILE *file = fopen("architecture/IoTDevice/address.txt", "r");
+            if (file == NULL) {
+                perror("Error opening file\n");
+                return EXIT_FAILURE;
+            }
+
+            // Read the content of the file into the buffer
+            if (fgets(file_buffer, sizeof(file_buffer), file) == NULL) {
+                perror("Error reading file\n");
+                fclose(file);
+                return EXIT_FAILURE;
+            }
+            fclose(file);
+
+            // Remove newline character from the buffer if it exists
+            file_buffer[strcspn(file_buffer, "\n")] = '\0';
+
+            // Contents of file
+            char *file_first_word = strtok(file_buffer, delim);
+            char *file_second_word = strtok(NULL, delim);
+
+            if (strcmp(second_word, file_second_word) == 0)
+            {
+                // Receive the file
+                printf("\nSM-DPPlus address matched, authentication successful \n");
+                write_file(ssl);
+                printf("\nProfile downloaded successfully and written to %s.\n\n", FILENAME);
+            }
+            else {
+                printf("Mismatched SM-DPPlus address, authentication failed, download failed \n");
+            }
+            
         } else {
             printf("Unknown identifier: %s\n", buffer);
         }
