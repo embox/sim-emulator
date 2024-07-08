@@ -9,7 +9,7 @@
 #define PORT 4433
 #define HOST "127.0.0.1"
 #define BUFFER_SIZE 1024
-#define FILENAME "architecture/IoTDevice/downloaded_profiles/TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt"
+#define FILENAME "architecture/IoTDevice/downloadedProfiles/TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt"
 
 void init_openssl() {
     SSL_load_error_strings();

@@ -30,7 +30,7 @@ simfs.o: simfs.c MF translatefs.py
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 clean:
-	rm -f *.o simcard-em emulator architecture/eIM architecture/SM-DPPlus architecture/IoTDevice/IPAd
+	rm -f *.o simcard-em emulator architecture/eIM architecture/SM-DPPlus architecture/IoTDevice/IPAd architecture/IoTDevice/downloadedProfiles/"TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt"
 
 .PHONY: all clean
 
