@@ -1,0 +1,43 @@
+value1 ProfileElement ::= header : {
+  major-version 2,
+  minor-version 1,
+  profileType "GSMA Generic eUICC Test Profile",
+  iccid '89000123456789012341'H,
+  eUICC-Mandatory-services {
+    usim NULL,
+    isim NULL,
+    csim NULL,
+    usim-test-algorithm NULL,
+    ber-tlv NULL
+  },
+  eUICC-Mandatory-GFSTEList {
+    { 2 23 143 1 2 1 },
+    { 2 23 143 1 2 3 },
+    { 2 23 143 1 2 4 },
+    { 2 23 143 1 2 5 },
+    { 2 23 143 1 2 7 },
+    { 2 23 143 1 2 8 },
+    { 2 23 143 1 2 9 },
+    { 2 23 143 1 2 10 },
+    { 2 23 143 1 2 11 }
+  }
+}
+
+value3 ProfileElement ::= pukCodes : {
+  puk-Header {
+    mandated NULL,
+    identification 5
+  },
+  pukCodes {
+    {
+      keyReference pukAppl1,
+      pukValue '3131313131313131'H,
+      maxNumOfAttemps-retryNumLeft 170
+    },
+    {
+      keyReference secondPUKAppl1,
+      pukValue '3232323232323232'H,
+      maxNumOfAttemps-retryNumLeft 170
+    }
+  }
+}

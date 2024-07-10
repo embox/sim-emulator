@@ -8,7 +8,7 @@
 
 // Function prototypes
 void profileDownload();
-void enableProfile();
+void installProfile();
 void disableProfile();
 void exitEmulator();
 
@@ -21,8 +21,8 @@ int main() {
     // Display the menu
     printf("\nWelcome to eSIM Emulator:\n");
     printf("1. Profile Download\n");
-    printf("2. Enable Profile\n");
-    printf("3. Disable Profile\n");
+    printf("2. Install Profile\n");
+    printf("3. Delete Profile\n");
     printf("4. Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
@@ -33,7 +33,7 @@ int main() {
             profileDownload();
             break;
         case 2:
-            enableProfile();
+            installProfile();
             break;
         case 3:
             disableProfile();
@@ -110,9 +110,22 @@ void profileDownload() {
     read_from_pipe(client_pipe, "Client");
 }
 
-void enableProfile() {
-    printf("You have entered Mode 2.\n");
-    // Add more functionality here for Mode 2
+void installProfile() {
+    
+    printf("Installing profile \n");
+
+    char input_data[] = "TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt\n";
+    char command[256];
+    sprintf(command, "echo \"%s\" | python architecture/IoTDevice/eUICC/profileInstaller.py", input_data);
+    int result = system(command);
+
+    if (result == 0) {
+        printf("Installation executed successfully.\n");
+    } else {
+        printf("Error executing installation script.\n");
+    }
+
+    
 }
 
 void disableProfile() {
