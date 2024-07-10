@@ -8,7 +8,7 @@
 
 // Function prototypes
 void profileDownload();
-void enableProfile();
+void installProfile();
 void disableProfile();
 void exitEmulator();
 
@@ -21,8 +21,8 @@ int main() {
     // Display the menu
     printf("\nWelcome to eSIM Emulator:\n");
     printf("1. Profile Download\n");
-    printf("2. Enable Profile\n");
-    printf("3. Disable Profile\n");
+    printf("2. Install Profile\n");
+    printf("3. Delete Profile\n");
     printf("4. Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
@@ -33,7 +33,7 @@ int main() {
             profileDownload();
             break;
         case 2:
-            enableProfile();
+            installProfile();
             break;
         case 3:
             disableProfile();
@@ -44,13 +44,11 @@ int main() {
         default:
             printf("Invalid choice, please try again.\n");
     }
-        
 
     return 0;
 }
 
 void profileDownload() {
-    
     // Message to user 
     printf("\n->Initiating profile download procedure\n");
     printf("->Establishing Secure Connection between IPAd and eIM \n");
@@ -77,17 +75,57 @@ void profileDownload() {
 
     // Start the client process
     printf("\nStarting IPAd as client...\n");
-    start_process(".//architecture//IoTDevice/IPAd", client_pipe);
+    start_process("./architecture/IoTDevice/IPAd", client_pipe);
 
     // Read and print the outputs from both processes
     read_from_pipe(server_pipe, "Server");
     read_from_pipe(client_pipe, "Client");
 
+    // Message to user
+    printf("\n->Re-establishing Secure Connection between IPAd and SM-DPPlus\n");
+
+    // Recreate pipes for the next pair of processes
+    if (pipe(server_pipe) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+    if (pipe(client_pipe) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+
+    // Start the SM-DPPlus process
+    printf("\nStarting SM-DPPlus as server...\n");
+    start_process("./architecture/SM-DPPlus", server_pipe);
+
+    // Give the server some time to start up and listen
+    sleep(2);
+
+    // Start the client process again
+    printf("\nStarting IPAd as client...\n");
+    start_process("./architecture/IoTDevice/IPAd", client_pipe);
+
+    // Read and print the outputs from both processes
+    read_from_pipe(server_pipe, "Server");
+    read_from_pipe(client_pipe, "Client");
 }
 
-void enableProfile() {
-    printf("You have entered Mode 2.\n");
-    // Add more functionality here for Mode 2
+void installProfile() {
+    
+    printf("Installing profile \n");
+
+    char input_data[] = "TS48 V3.0 eSIM_GTP_SAIP2.1_BERTLV.txt\n";
+    char command[256];
+    sprintf(command, "echo \"%s\" | python architecture/IoTDevice/eUICC/profileInstaller.py", input_data);
+    int result = system(command);
+
+    if (result == 0) {
+        printf("Installation executed successfully.\n");
+    } else {
+        printf("Error executing installation script.\n");
+    }
+
+    
 }
 
 void disableProfile() {
@@ -99,7 +137,6 @@ void exitEmulator() {
     printf("Exiting the emulator. Goodbye!\n");
     exit(0); // Exit the program
 }
-
 
 void start_process(const char *program, int pipefd[2]) {
     pid_t pid = fork();
